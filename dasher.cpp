@@ -13,6 +13,10 @@ int main()
     const int jumpVel{-22};
     bool isInAir{};
 
+    Texture2D scarfy = LoadTexture("/textures/scarfy.png"); 
+    Rectangle scarfyRec;
+    Vector2 scarfyPos;
+
     //    Rectangle dimensions
     const int width{50};
     const int height{80};
