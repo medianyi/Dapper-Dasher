@@ -76,7 +76,7 @@ int main()
             // update running time
             runningTime += dT;
 
-            if (runningTime => updateTime)
+            if (runningTime >= updateTime)
             {
                 runningTime = 0;
                 // update animation frame
