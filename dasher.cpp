@@ -9,9 +9,9 @@ struct AnimData
     float runningTime;
 };
 
-bool isOnGround(AnimData data, int windowHight)
+bool isOnGround(AnimData data, int windowHeight)
 {
-    return data.pos.y >= windowHight - data.rec.height;
+    return data.pos.y >= windowHeight - data.rec.height;
 }
 
 AnimData updateAnimDate(AnimData data, float deltaTime, int maxFrame)
@@ -27,18 +27,18 @@ AnimData updateAnimDate(AnimData data, float deltaTime, int maxFrame)
         if (data.frame > maxFrame)
         {
             data.frame = 0;
-        }
-        
+        }  
     }
     return data;
 }
 
 int main()
 {
-    // window dimensions
+    //  array with window dimensions
     int windowDimensions[2];
     windowDimensions[0] = 512;
     windowDimensions[1] = 380;
+    
     // initialize the window
     InitWindow(windowDimensions[0], windowDimensions[1], "Dapper Dasher");
 
@@ -48,7 +48,7 @@ int main()
     // nebula variables
     Texture2D nebula = LoadTexture("./textures/12_nebula_spritesheet.png");
 
-    const  int sizeOfNebulae{6};
+    const  int sizeOfNebulae{10};
     AnimData nebulae[sizeOfNebulae]{};
 
     for (int i = 0; i < sizeOfNebulae; i++)
@@ -61,10 +61,11 @@ int main()
        nebulae[i].frame = 0;
        nebulae[i].runningTime = 0.0;
        nebulae[i].updateTime = 0.0;
-       nebulae[i].pos.x = windowDimensions[i] + (i * 300);
+       nebulae[i].pos.x = windowDimensions[0] + (i * 300);
     }
  
     // nebula X velocity
+    
     int nebVel{-200};
 
 // scarfy variables
@@ -85,7 +86,6 @@ int main()
     // jump velocity (pixel/second)
     const int jumpVel{-600};
 
-
     int velocity{0};
 
     SetTargetFPS(60);
@@ -98,7 +98,7 @@ int main()
             ClearBackground(WHITE);
 
             
-            // ground check
+            //  perform ground check
             if (isOnGround(scarfyData, windowDimensions[1]))
             {
                 // rectangel is on the graund
